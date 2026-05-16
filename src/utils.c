@@ -1,17 +1,16 @@
 #include "utils.h"
 
 void generateData(int arr[], int size) {
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
     for (int i = 0; i < size; i++) {
-        arr[i] = rand() % 10000 + 1; // random 1 - 10000
+        arr[i] = rand() % 10000 + 1;
     }
 }
 
 void shuffleData(int arr[], int size) {
-    srand(time(NULL));
     for (int i = size - 1; i > 0; i--) {
-        int j = rand() % (i + 1);
-        // swap
+        // fix MinGW rand() max 32767
+        int j = ((rand() << 15) | rand()) % (i + 1);
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
