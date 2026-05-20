@@ -16,7 +16,12 @@ void menuSortingDasar() {
         printf("3. Selection Sort\n");
         printf("4. Kembali\n");
         printf("Pilih metode : ");
-        scanf("%d", &pilihan);
+        if (scanf("%d", &pilihan) != 1) {
+            printf("Input tidak valid!\n");
+            while (getchar() != '\n'); // bersihkan buffer
+            pilihan = 0;
+            continue;
+        }
 
         if (pilihan >= 1 && pilihan <= 3) {
             int temp[DATA_SIZE];
@@ -53,7 +58,12 @@ int main() {
         printf("2. Advance Sorting\n");
         printf("3. Keluar\n");
         printf("Pilih menu : ");
-        scanf("%d", &pilihan);
+        if (scanf("%d", &pilihan) != 1) {
+            printf("Input tidak valid!\n");
+            while (getchar() != '\n'); // bersihkan buffer
+            pilihan = 0;
+            continue;
+        }
 
         switch (pilihan) {
             case 1: menuSortingDasar(); break;
