@@ -18,7 +18,13 @@ void menuAdvanceSorting() {
         printf("3. Shell Sort\n");
         printf("4. Kembali\n");
         printf("Pilih metode : ");
-        scanf("%d", &choice);
+        
+        if (scanf("%d", &choice) != 1) {
+            printf("Input harus angka\n");
+
+            while (getchar() != '\n');
+            continue;
+        }
 
         if (choice >= 1 && choice <= 3) {
             char *temp[dataSize];
@@ -26,10 +32,10 @@ void menuAdvanceSorting() {
                 temp[i] = data[i];
             }
 
-            shuffleData(temp, data);
-            printf("\nData sebelum sorting (%d data pertama):\n", DISPLAY_COUNT);
+            shuffleData(temp, dataSize);
+            printf("\n %d Data sebelum sorting :\n", DISPLAY_COUNT);
             
-            displayData(temp, data, DISPLAY_COUNT);
+            displayData(temp, dataSize, DISPLAY_COUNT);
 
             clock_t start = clock();
 
@@ -45,7 +51,7 @@ void menuAdvanceSorting() {
             
             clock_t end = clock();
 
-            printf("Data setelah sorting (%d data pertama):\n", DISPLAY_COUNT);
+            printf("%d Data setelah sorting:\n", DISPLAY_COUNT);
 
             displayData(temp, dataSize, DISPLAY_COUNT);
             printExecutionTime(start, end);
@@ -53,7 +59,7 @@ void menuAdvanceSorting() {
         } else if (choice == 4) {
             break;
         } else {
-            printf("Pilihan tidak valid!\n");
+            printf("Pilihan tidak valid\n");
         }
 
     } while (1);
@@ -64,13 +70,13 @@ int main () {
 
     printf("Memasukkan data\n");
     
-    dataSize = loadDataset(data, "Words.txt");
+    dataSize = loadData(data, "data/Words.txt");
 
-    if (dataSize == NULL) {
+    if (dataSize == 0) {
         printf("Program berhenti, karena data NULL\n");
         return 1;
     }
-    printf("Berhasil memuat %d kata!\n", dataSize);
+    printf("Berhasil memuat %d kata\n", dataSize);
 
     int choose;
     do {
@@ -79,13 +85,19 @@ int main () {
         printf("2. Advance Sorting\n");
         printf("3. Keluar\n");
         printf("Pilih menu : ");
-        scanf("%d", &choose);
+
+        if (scanf("%d", &choose) != 1) {
+            printf("Input harus angka\n");
+
+            while (getchar() != '\n');
+            continue;
+        }
 
         switch (choose) {
             case 1: printf("done\n"); break;
             case 2: menuAdvanceSorting(); break;
             case 3: printf("Keluar dari program.\n"); break;
-            default: printf("Pilihan tidak valid!\n");
+            default: printf("Pilihan tidak valid\n");
         }
     } while (choose != 3);
 
