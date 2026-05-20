@@ -93,12 +93,13 @@ void quickSort (char *arr[], int low, int high) {
 // Shell Sort
 void shellSort (char *arr[], int n) {
     for (int interval = n / 2; interval > 0; interval /= 2) {
-        for (int i = interval; i < n; i+= 1) {
+        for (int i = interval; i < n; i += 1) {
             char *temp = arr[i];
-            int j;
+            int j = i;
 
-            for (j = i; j >= interval && strcmp(arr[j - interval], temp) > 0; j -= interval) {
+            while (j >= interval && strcmp(arr[j - interval], temp) > 0) {
                 arr[j] = arr[j - interval];
+                j -= interval;
             }
             arr[j] = temp;
         }
