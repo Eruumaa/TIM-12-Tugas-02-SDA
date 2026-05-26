@@ -3,7 +3,7 @@
 #include <string.h>
 
 // Merge Sort
-void merge (char *arr[], int left, int mid, int right) {
+void merge (char *arr[], int left, int mid, int right) { //
     int i, j, k;
     int n1 = mid - left + 1;
     int n2 = right - mid;
