@@ -18,4 +18,5 @@ TUJUAN PROGRAM
 Memahami konsep sorting pada struktur data
 Melatih implementasi algoritma menggunakan bahasa C
 Meningkatkan kemampuan pemrograman dasar
-ya
+
+yahahah
