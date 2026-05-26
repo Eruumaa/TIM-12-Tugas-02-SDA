@@ -1,5 +1,6 @@
 #include "basic_sorting.h"
 
+// Fungsi utama bubble sort
 void bubbleSort(int arr[], int size) {
     for (int i = 0; i < size - 1; i++) {
         for (int j = 0; j < size - i - 1; j++) {
@@ -12,6 +13,7 @@ void bubbleSort(int arr[], int size) {
     }
 }
 
+// Fungsi utama insertion sort
 void insertionSort(int arr[], int size) {
     for (int i = 1; i < size; i++) {
         int key = arr[i];
@@ -24,6 +26,7 @@ void insertionSort(int arr[], int size) {
     }
 }
 
+// Fungsi utama selection sort
 void selectionSort(int arr[], int size) {
     for (int i = 0; i < size - 1; i++) {
         int min_idx = i;
