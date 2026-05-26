@@ -33,6 +33,20 @@ void shuffleData(char *arr[], int size) {
     for (int i = size - 1; i > 0; i--) {
         int j = rand() % (i + 1);
         char *temp = arr[i];
+#include "utils.h"
+
+void generateData(int arr[], int size) {
+    srand((unsigned int)time(NULL));
+    for (int i = 0; i < size; i++) {
+        arr[i] = rand() % 10000 + 1;
+    }
+}
+
+void shuffleData(int arr[], int size) {
+    for (int i = size - 1; i > 0; i--) {
+        // fix MinGW rand() max 32767
+        int j = ((rand() << 15) | rand()) % (i + 1);
+        int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
@@ -49,4 +63,16 @@ void displayData(char *arr[], int size, int limit) {
 void printExecutionTime(clock_t start, clock_t end) {
     double time = ((double)(end - start)) / CLOCKS_PER_SEC;
     printf("Waktu eksekusi sorting: %f detik\n", time);
+void displayData(int arr[], int size, int count) {
+    if (count > size) count = size;
+    for (int i = 0; i < count; i++) {
+        printf("%d", arr[i]);
+        if (i < count - 1) printf(", ");
+    }
+    printf("\n");
+}
+
+void printExecutionTime(clock_t start, clock_t end) {
+    double time_taken = ((double)(end - start)) / CLOCKS_PER_SEC;
+    printf("Waktu eksekusi : %.6f detik\n", time_taken);
 }
