@@ -19,3 +19,5 @@ Memahami konsep sorting pada struktur data
 Melatih implementasi algoritma menggunakan bahasa C
 Meningkatkan kemampuan pemrograman dasar
 
+cara compile
+gcc src/main.c src/utils.c src/advanceSorting.c src/basic_sorting.c -o program
